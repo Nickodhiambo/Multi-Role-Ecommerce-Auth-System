@@ -84,6 +84,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     
 class Vendor(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='vendor')
+
+    # vendor specific fields
     business_name = models.CharField(max_length=255)
     business_address = models.CharField(max_length=300)
     bio = models.TextField()
@@ -101,6 +103,8 @@ class Customer(models.Model):
     
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, related_name='customer')
+    
+    # Customer specific fields
     
     def __str__(self):
         return self.user.email
